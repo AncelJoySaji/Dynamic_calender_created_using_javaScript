@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button style="font-size: 25px;" onclick="detectClick()">Enter Year</button>	
+<script type="text/javascript">
+function detectClick() {
+ document.body.innerHTML="<button style=\"font-size: 25px;\" onclick=\"detectClick()\">Enter Year</button>";
+var year1 = prompt("Script prompt:\nEnter 4 digit year", "2021");
+var year=parseInt(year1);
+ if(year!=null&&year!=""){
+ var leap;
+ if(year%4==0&&year%100!=0){
+  leap=29;
+ }else if(year%100==0){
+  leap=28;
+ }else if(year%400==0){
+ 	leap=29;
+ }else{
+ 	leap=28;
+ }
+
+ for(var j=1;j<=12;j++){
+  var table = document.createElement("table");
+  table.border="1px solid black";
+  var k=30;
+  var th=document.createElement("th");
+  th.colspan=7;
+  var tr=document.createElement("tr");
+ 	if(j==1){
+ 		k=31;
+ 		th.innerHTML="January";
+ 		document.body.appendChild(table);
+ 	}else if(j==2){
+ 		k=leap;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="February";
+ 	}else if(j==3){
+ 		k=31;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="March";
+ 	}else if(j==5){
+ 		k=31;;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="May";
+ 	}else if(j==7){
+ 		k=31;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="July";
+ 	}else if(j==8){
+ 		k=31;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="August";
+ 	}else if(j==10){
+ 		k=31;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="October";
+ 	}else if(j==12){
+ 		k=31;
+ 		document.body.appendChild(table);
+ 		th.innerHTML="December";
+ 	}else if(j==4){
+
+ 		document.body.appendChild(table);
+ 		th.innerHTML="April";
+ 	}
+ 	else if(j==6){
+ 		document.body.appendChild(table);
+ 		th.innerHTML="June";
+ 	}
+ 	else if(j==9){
+
+ 		document.body.appendChild(table);
+ 		th.innerHTML="September";
+ 	}else if(j==11){
+ 		document.body.appendChild(table);
+ 		th.innerHTML="November";
+ 	}
+    th.innerHTML+=" "+year;
+tr.style.backgroundColor="red";
+
+  tr.appendChild(th);
+table.appendChild(tr);
+  createWeeks(table);
+  createDates(k,j,year,table);
+
+}
+
+}
+}
+
+function createDates(k,m,year,table){
+var c=0;
+
+var tr=document.createElement("tr");
+var day1;
+  if(m==1){
+var date = new Date('January 1, '+year);
+ day1= date.getDay();
+	}else if(m==2){
+var date = new Date('February 1, '+year);
+ day1= date.getDay();
+	}else if(m==3){
+var date = new Date('March 1, '+year);
+ day1= date.getDay();
+	}else if(m==4){
+var date = new Date('April 1, '+year);
+ day1= date.getDay();
+	}else if(m==5){
+var date = new Date('May 1, '+year);
+ day1= date.getDay();
+	}else if(m==6){
+var date = new Date('June 1, '+year);
+ day1= date.getDay();
+	}else if(m==7){
+var date = new Date('July 1, '+year);
+ day1= date.getDay();
+	}else if(m==8){
+var date = new Date('August 1, '+year);
+ day1= date.getDay();
+	}else if(m==9){
+var date = new Date('September 1, '+year);
+ day1= date.getDay();
+	}else if(m==10){
+var date = new Date('October 1, '+year);
+ day1= date.getDay();
+	}else if(m==11){
+var date = new Date('November 1, '+year);
+ day1= date.getDay();
+	}else if(m==12){
+var date = new Date('December  1, '+year);
+ day1= date.getDay();
+	}
+  for(var i=1;i<=day1;i++){
+    var td=document.createElement("td");
+    td.innerHTML="";
+    tr.appendChild(td);
+    ++c;
+    if(c==7){
+      tr.appendChild(td);
+      table.appendChild(tr);
+    }else if(c==14){
+ tr.appendChild(td);
+      table.appendChild(tr);
+    }
+  }
+  for(var i=1;i<=k;i++){
+    var td=document.createElement("td");
+   tr.style.backgroundColor="grey";
+    td.innerHTML=i;
+    tr.appendChild(td);
+    ++c;
+    if(c==7){
+      tr.appendChild(td);
+      table.appendChild(tr);
+      tr=document.createElement("tr");tr.style.backgroundColor="grey";
+    }else if(c==14){
+ tr.appendChild(td);
+      table.appendChild(tr);
+      tr=document.createElement("tr");tr.style.backgroundColor="grey";
+    }else if(c==21){
+ tr.appendChild(td);
+      table.appendChild(tr);
+      tr=document.createElement("tr");tr.style.backgroundColor="grey";
+    }else if(c==28){
+ tr.appendChild(td);
+      table.appendChild(tr);
+      tr=document.createElement("tr");tr.style.backgroundColor="grey";
+    }else if(c==35){
+ tr.appendChild(td);
+      table.appendChild(tr);
+      tr=document.createElement("tr");tr.style.backgroundColor="grey";
+    }
+  }
+  table.appendChild(tr);
+     
+}
+
+function createWeeks(table){
+var tr=document.createElement("tr");
+tr.style.backgroundColor="lightblue";
+  for(var i=0;i<7;i++){
+ var th1=document.createElement("th");
+  	if(i==0){
+  th1.innerHTML="Sun";
+  tr.appendChild(th1);
+  	}else if(i==1){
+  th1.innerHTML="Mon";
+  tr.appendChild(th1);
+  	}else if(i==2){
+  th1.innerHTML="Tue";
+  tr.appendChild(th1);
+  	}else if(i==3){
+  th1.innerHTML="Wed";
+  tr.appendChild(th1);
+  	}else if(i==4){
+  th1.innerHTML="Thu";
+  tr.appendChild(th1);
+  	}else if(i==5){
+  th1.innerHTML="Fri";
+  tr.appendChild(th1);
+    }else if(i==6){
+  th1.innerHTML="Sat";
+  tr.appendChild(th1);
+  	}
+  }
+  table.appendChild(tr);
+}
+</script>
+
+</body>
+</html>
